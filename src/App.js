@@ -52,9 +52,7 @@ function App() {
   }, [data]);
 
   useEffect(() => {
-    return () => {
-      bringData();
-    };
+    bringData();
   }, []);
   const shortenData = Math.ceil(data.length / 10);
   const changePage = () => {

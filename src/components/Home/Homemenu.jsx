@@ -3,7 +3,7 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 import { BlogContent } from "./Home";
 const Homemenu = () => {
   const [display, setDisplay] = useState(false);
-  const { data, num } = useContext(BlogContent);
+  const { num } = useContext(BlogContent);
   const resetDisplay = () => {
     setDisplay((display) => !display);
   };

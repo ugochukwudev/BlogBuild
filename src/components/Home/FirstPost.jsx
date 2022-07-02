@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import { AiOutlineRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import Data from "./data";
 import { BlogContent } from "./Home";
 import AOS from "aos";
 import "aos/dist/aos.css";

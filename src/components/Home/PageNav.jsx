@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { FaLessThan, FaGreaterThan } from "react-icons/fa";
 import { BlogContent } from "./Home";
 import Recommended from "./Recommended";

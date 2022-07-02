@@ -3,10 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Data from "./data";
-import { BlogContent } from "./Home";
-import { useContext } from "react";
 export default function SimpleSlider() {
-  const { data } = useContext(BlogContent);
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
 
