@@ -1,0 +1,146 @@
+@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+/* ::-webkit-scrollbar {
+  width: 10px;
+} */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  padding: 10px;
+}
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-thumb {
+  border: 3px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  background-color: #d8383a;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.set-trend {
+  background: linear-gradient(
+    90deg,
+    rgb(239 68 68) 0% 15%,
+    rgb(245 245 245) 15% 70%,
+    rgb(245 245 245)
+  );
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/*setting up the navigation*/
+
+@media (min-width: 1024px) {
+  .set-art {
+    position: absolute;
+  }
+}
+
+@media (max-width: 760px) {
+  .nav {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 280px) {
+  .set-fold {
+    margin-top: 30px;
+  }
+  .set-name {
+    margin-bottom: 50px;
+  }
+  .likee {
+    margin-top: 35px;
+    left: 0;
+  }
+}
+
+input {
+  font-family: fontAwesome;
+}
+
+.sticky {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+}
+
+.scroll::-webkit-scrollbar {
+  width: 0;
+}
+
+.slider {
+  background-color: red;
+}
+
+.center-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.set-dummy-containers {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+}
