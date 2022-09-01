@@ -89,7 +89,7 @@ export default function SimpleSlider() {
     <div>
       <Slider
         {...settings}
-        className="w-10/12  mb-10 ml-auto mr-auto mb-10 2xl:w-4/12"
+        className="w-10/12  mb-10 ml-auto mr-auto  2xl:w-4/12"
       >
         {Data.map((item) => {
           return (

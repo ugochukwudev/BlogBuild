@@ -7,14 +7,14 @@ const Homemenu = () => {
   const resetDisplay = () => {
     setDisplay((display) => !display);
   };
-
+  // this function is gotten from our context above
   const removeMenu = () => {
     setDisplay(false);
   };
   return (
     <div>
       {num === 1 && (
-        <div className="sticky z-50 bg-[#d8383a] flex flex-col w-full h-40 lg:h-full relative mt-10 ">
+        <div className="sticky z-50 bg-[#d8383a] flex flex-col w-full h-40 lg:h-full  mt-10 ">
           <div className="ml-auto mr-auto 2xl:w-6/12 relative">
             <input
               className="pl-12 ml-14 rounded-tiny focus:outline-none border-gray-300 h-10 mt-4 w-4/6 md:absolute md:right-8 md:w-48 md:top-2 lg:w-3/12 "
@@ -22,7 +22,7 @@ const Homemenu = () => {
               placeholder="   &#xf002; Search articles or topic"
             />
 
-            <div className="flex text-white cursor-pointer text-base lg:text-lg m-auto leading-none px-3 py-1 border-none rounded bg-transparent block lg:hidden outline-none focus:outline-none my-2 relative">
+            <div className="flex text-white cursor-pointer text-base lg:text-lg m-auto leading-none px-3 py-1 border-none rounded bg-transparent  lg:hidden outline-none focus:outline-none my-2 relative">
               <h4
                 onClick={resetDisplay}
                 className=" z-50 absolute right-44 md:left-12 md:top-12 lg:hidden"
@@ -106,7 +106,7 @@ const Homemenu = () => {
               </ul>
             )}
 
-            <ul className="hidden lg:flex lg:block mt-4 lg:flex-wrap lg:w-8/12 sticky ml-14">
+            <ul className="hidden lg:flex  mt-4 lg:flex-wrap lg:w-8/12 sticky ml-14">
               <li className="border-white border p-2 w-fit h-fit text-white m-2 text-xs">
                 All
               </li>

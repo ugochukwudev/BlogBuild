@@ -47,7 +47,7 @@ const Blog = () => {
 
         return (
           <a
-            className="text-blue-600"
+            className="text-red-600 font-bold"
             target="_blank"
             href={node.data.uri}
             rel="noreferrer"
@@ -221,14 +221,14 @@ const Blog = () => {
             </div>
             <div className="flex absolute right-0 m-2 p-2 text-red-500 likee">
               <AiOutlineHeart className="w-4 mt-px mr-2 " />
-              <p className="text-base lg:mt-2 font-bold ">like (1)</p>
+              <p className="text-base lg:mt-2 font-bold ">like (3)</p>
             </div>
           </div>
           <hr className=" mb-10 w-10/12 ml-auto mr-auto h-0.5 bg-zinc-900" />
         </div>
       </div>
       <div>
-        <div className="flex w-8/12 ml-auto mr-auto mb-10 flex bg-[#eee]  lg:h-36 items-center p-2">
+        <div className=" w-8/12 ml-auto mr-auto mb-10 flex bg-[#eee]  lg:h-36 items-center p-2">
           <div>
             <h4 className="text-base font-bold ">
               Sign in or create a new account

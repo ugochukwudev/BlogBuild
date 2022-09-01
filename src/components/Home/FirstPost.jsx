@@ -10,13 +10,14 @@ const FirstPost = () => {
   const post = data[select];
   const date = post && post.fields.publishedDate;
   var realDate = new Date(date).toDateString();
-  // console.log(realDate.slice(0, 10));
-  // console.log(post);
 
+  // this useEffect calls an importet npm package that animates our page. package name is aos library
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
+
+  // this picks a particular data and displays it as the first content.
   return (
     <div className=" flex h-auto relative w-fit ml-auto mr-auto 2xl:w-6/12">
       {num === 1 && (
@@ -28,7 +29,7 @@ const FirstPost = () => {
             {post && post.fields.readTime} min read
           </p>
           <Link to={`/blog/${post && post.fields.slug}`}>
-            <h1 className=" ml-4 mr-4 text-2xl my-3 leading-heading text-2xl font-bold lg:ml-20 lg:text-3xl">
+            <h1 className=" ml-4 mr-4 text-2xl my-3 leading-heading  font-bold lg:ml-20 lg:text-3xl">
               {post && post.fields.title}
             </h1>
           </Link>

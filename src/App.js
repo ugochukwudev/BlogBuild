@@ -12,28 +12,11 @@ import { BlogContent } from "./components/Home/Home";
 import { useCallback, useState, useEffect } from "react";
 import { client } from "./components/Home/BlogData";
 function App() {
+  // importing useState
   const [data, setData] = useState([]);
   const [num, setNum] = useState(1);
-  const [displayRegister, setDisplayRegister] = useState(false);
 
-  const changeRegister = () => {
-    const items = JSON.parse(localStorage.getItem("user"));
-    if (!items) {
-      setDisplayRegister((previous) => !previous);
-    } else {
-      setDisplayRegister(false);
-    }
-  };
-
-  const setDisplayToFalse = () => {
-    setDisplayRegister(false);
-  };
-
-  const [displaySignin, setDisplaySignin] = useState(false);
-
-  const changeSignin = () => {
-    setDisplaySignin((previous) => !previous);
-  };
+  // this function brings our cms data
   const bringData = useCallback(async () => {
     try {
       const response = await client.getEntries({
@@ -51,10 +34,15 @@ function App() {
     }
   }, [data]);
 
+  // calling above functon
   useEffect(() => {
     bringData();
   }, []);
+
+  // here, i'm shortening data length to use on changePage
   const shortenData = Math.ceil(data.length / 10);
+
+  // this function runs on pagenav and changes the page
   const changePage = () => {
     if (num === shortenData) {
       setNum((num) => num);
@@ -63,6 +51,8 @@ function App() {
     }
     setNum((num) => num + 1);
   };
+
+  // this returns previous page
   const reducePage = () => {
     if (num === 1) {
       setNum((num) => num);
@@ -72,28 +62,28 @@ function App() {
     setNum((num) => num - 1);
   };
   return (
+    // useContext to make files available globally
     <BlogContent.Provider
       value={{
         data: data,
         changePage,
         num,
         reducePage,
-        displayRegister,
-        changeRegister,
-        displaySignin,
-        changeSignin,
-        setDisplayToFalse,
       }}
     >
       <div></div>
       <Routes>
+        {/* as the name implies, manages navigation */}
         <Route path="/" element={<Navigation />}>
+          {/* homepage */}
           <Route path="/" element={<Home />} />
+          {/* about page */}
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="success-stories" element={<SuccessStories />} />
           <Route path="/login" element={<Login />} />
+          {/* this page, manages the blog content by, taking the slug from clicked post and displaying its data */}
           <Route path="/blog/:name" element={<Blog />} />
         </Route>
       </Routes>
