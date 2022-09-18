@@ -30,7 +30,7 @@ const Main = () => {
   }
   let main = data && searchword.slice(secondSlice, firstSlice);
   return (
-    <div className="lg:flex flex flex-col ">
+    <div className="lg:flex flex flex-col z-0">
       {noSearch && (
         <p className="text-red-700 text-center text-bold font-medium mt-5 mb-5">
           No such content found in this blog. Please, clear search bar and

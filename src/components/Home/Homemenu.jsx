@@ -29,7 +29,7 @@ const Homemenu = () => {
     //console.log(search);
   };
   return (
-    <div className="sticky top-0 z-[99999999999999999999999]">
+    <div className="sticky index top-0">
       {num === 1 && (
         <div className="sticky top-0  bg-[#d8383a] flex flex-col w-full h-40 lg:h-full  mt-10 ">
           <div className="ml-auto mr-auto 2xl:w-6/12 relative">
