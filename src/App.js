@@ -11,11 +11,14 @@ import Blog from "./components/Home/Blog";
 import { BlogContent } from "./components/Home/Home";
 import { useCallback, useState, useEffect } from "react";
 import { client } from "./components/Home/BlogData";
+import { BsSearch } from "react-icons/bs";
 function App() {
   // importing useState
   const [data, setData] = useState([]);
   const [num, setNum] = useState(1);
-
+  const [search, setSearch] = useState("");
+  const [noSearch, setNoSearch] = useState(false);
+  const [tag, setTag] = useState("#");
   // this function brings our cms data
   const bringData = useCallback(async () => {
     try {
@@ -61,6 +64,22 @@ function App() {
     }
     setNum((num) => num - 1);
   };
+  const setsearchtoinput = (e) => {
+    setSearch(e);
+  };
+  const hidenosearch = (e) => {
+    setNoSearch(true);
+  };
+  const shownosearch = (e) => {
+    setNoSearch(false);
+  };
+  const sethashtag = (e) => {
+    if (e === "all") {
+      setTag("#");
+    } else {
+      setTag(e);
+    }
+  };
   return (
     // useContext to make files available globally
     <BlogContent.Provider
@@ -69,6 +88,13 @@ function App() {
         changePage,
         num,
         reducePage,
+        search,
+        setsearchtoinput,
+        noSearch,
+        shownosearch,
+        hidenosearch,
+        tag,
+        sethashtag,
       }}
     >
       <div></div>

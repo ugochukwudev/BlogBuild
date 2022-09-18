@@ -9,18 +9,34 @@ import { BlogContent } from "./Home";
 import AOS from "aos";
 import "aos/dist/aos.css";
 const Main = () => {
-  const { data, num } = useContext(BlogContent);
+  const { data, num, search, shownosearch, hidenosearch, noSearch, tag } =
+    useContext(BlogContent);
 
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
+  console.log(search);
   let firstSlice = num * 10;
   let secondSlice = firstSlice - 10;
-
-  let main = data && data.slice(secondSlice, firstSlice);
+  let searchword = data.filter(
+    (post) =>
+      post.fields.topics?.toLowerCase().includes(tag.toLowerCase()) &&
+      post.fields.title.toLowerCase().includes(search.toLowerCase())
+  );
+  console.log(searchword);
+  {
+    !searchword.length < 1 ? shownosearch() : hidenosearch();
+  }
+  let main = data && searchword.slice(secondSlice, firstSlice);
   return (
     <div className="lg:flex flex flex-col ">
+      {noSearch && (
+        <p className="text-red-700 text-center text-bold font-medium mt-5 mb-5">
+          No such content found in this blog. Please, clear search bar and
+          select all{" "}
+        </p>
+      )}
       {main.map((item, index) => {
         return (
           <div
@@ -39,7 +55,7 @@ const Main = () => {
             >
               <span className="flex md:mt-10 ">
                 <h4 className="text-sm ml-4 text-red-700  mt-1 w-min">
-                  {main && `#${item.fields.topics ? item.fields.topics : ""}`}
+                  {main && `${item.fields.topics ? item.fields.topics : ""}`}
                 </h4>
                 <svg
                   className="bg-green-900 mt-3 rounded-full ml-3 md:mt-3 "
@@ -69,8 +85,7 @@ const Main = () => {
                   </h1>
                 </Link>
                 <p className=" ml-4 mr-4 mb-2 text-[#476072] text-base leading-6 text-text truncate-post-body xl:w-10/12 w-10/12">
-                  Looking to switch career path from graphic design to a more
-                  product focused career? Read this.
+                  {main && item.fields.description}
                 </p>
                 <span className="flex">
                   <img

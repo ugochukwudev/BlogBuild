@@ -1,9 +1,13 @@
+import { useContext } from "react";
 import Footer from "./Footer";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Data from "./data";
+import { BlogContent } from "./Home";
+import { Link } from "react-router-dom";
 export default function SimpleSlider() {
+  const { data } = useContext(BlogContent);
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
 
@@ -91,21 +95,26 @@ export default function SimpleSlider() {
         {...settings}
         className="w-10/12  mb-10 ml-auto mr-auto  2xl:w-4/12"
       >
-        {Data.map((item) => {
+        {data.map((item) => {
           return (
-            <ul className="sliding" key={item}>
+            <ul className="sliding h-[100%]" key={item}>
               <li
                 key={item.id}
                 className=" m-2 h-fit border-2 border-[#F5F5F5] rounded-lg relative"
               >
                 <div className="flex h-3/6 w-11/12 ml-3 mt-4">
-                  <img className="w-6/12 " src={item.img1} alt="deee" />
-                  <img className="w-6/12" src={item.img2} alt="see" />
+                  <img
+                    className="w-full h-3/6"
+                    src={item?.fields.mainImage.fields.file.url}
+                    alt="deee"
+                  />
                 </div>
                 <div className="h-3/6 ml-3">
-                  <h1 className="font-bold text-base leading-7 mt-2 mb-10">
-                    {item.name}
-                  </h1>
+                  <Link to={`/blog/${item?.fields.slug}`}>
+                    <h1 className="font-bold text-base leading-7 mt-2 mb-10">
+                      {item?.fields.title}
+                    </h1>
+                  </Link>
                   <div>
                     <div className="flex">
                       <svg className="mt-1" width="12" height="12" fill="none">
@@ -117,7 +126,7 @@ export default function SimpleSlider() {
                         ></path>
                       </svg>
                       <p className="ml-2 text-sm text-[#828282]">
-                        {item.author}
+                        {item?.fields.authorTitle}
                       </p>
                     </div>
                   </div>
@@ -137,9 +146,7 @@ export default function SimpleSlider() {
                         </clipPath>
                       </defs>
                     </svg>
-                    <p className="ml-2 text-sm text-[#828282]">
-                      {item.lessons} lessons
-                    </p>
+                    <p className="ml-2 text-sm text-[#828282]">lesson</p>
 
                     <div className="flex  right-4 absolute">
                       <svg
@@ -158,7 +165,7 @@ export default function SimpleSlider() {
                     </div>
                   </div>
                   <p className="text-[#0BB68F] font-bold text-sm mt-2 mb-4">
-                    ₦&nbsp;{item.price}
+                    Approved
                   </p>
                 </div>
               </li>

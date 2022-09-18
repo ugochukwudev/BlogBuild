@@ -143,10 +143,24 @@ const Blog = () => {
       },
     },
   };
+  {
+    !data && (
+      <div>
+        <p>Data is loading please be patient</p>
+      </div>
+    );
+  }
 
   return (
     <div>
-      <div className=" h-96 h-coverImgMob md:h-coverImgTab lg:h-coverImg flex items-center justify-center overflow-hidden mb-8 lg:mb-16">
+      {data.length < 1 && (
+        <img
+          alt="loading"
+          src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+          className="w-6/12 h-[50%] ml-auto mr-auto  bg-black"
+        />
+      )}
+      <div className="  h-coverImgMob md:h-coverImgTab lg:h-coverImg flex items-center justify-center overflow-hidden mb-4 lg:mb-16">
         <img
           className=" w-full 2xl:w-4/12"
           src={newPerson && newPerson.fields.mainImage.fields.file.url}
@@ -228,15 +242,23 @@ const Blog = () => {
         </div>
       </div>
       <div>
-        <div className=" w-8/12 ml-auto mr-auto mb-10 flex bg-[#eee]  lg:h-36 items-center p-2">
+        <div className=" w-8/12 ml-auto mr-auto mb-10 flex bg-[#eee]   items-center p-2">
           <div>
             <h4 className="text-base font-bold ">
-              Sign in or create a new account
+              Subscribe to our newsLetter
             </h4>
             <p className="text-base">
-              It looks like you aren’t connected to DABA, Click{" "}
-              <span className="text-[#0000ff]">here</span> to get connected.
+              Please Ignore If you're signed in already
             </p>
+            <input
+              onClick={() => changeView()}
+              className=" rounded-tiny focus:outline-none border-b-2 bg-transparent border-[#ddd] h-10 mt-4 w-full mb-10"
+              type="search"
+              placeholder="subscribe to newsLetter"
+            />
+            <button className="font-semibold text-[20px] border-2 border-black hover:bg-transparent hover:text-black bg-black text-white rounded-full py-2 px-6">
+              Subscribe
+            </button>
           </div>
           <div>
             <img
@@ -246,6 +268,9 @@ const Blog = () => {
             />
           </div>
         </div>
+        <p className="text-red-700 text-center text-base font-medium">
+          email and phone number are required for comment
+        </p>
         <div className="flex w-8/12 ml-auto mr-auto">
           <div className="mr-4 mt-2">
             <img
@@ -254,14 +279,26 @@ const Blog = () => {
             />
             <p className="text-xs">Anonymous</p>
           </div>
-          <input
-            onClick={() => changeView()}
-            className=" rounded-tiny focus:outline-none border-b-2 border-[#ddd] h-10 mt-4 w-full mb-10"
-            type="search"
-            placeholder=" Add a comment"
-          />
+          <div className="">
+            <input
+              onClick={() => changeView()}
+              className=" rounded-tiny focus:outline-none border-b-2 border-[#ddd] h-10 mt-4 w-full mb-10"
+              type="search"
+              placeholder=" Add a comment"
+            />
+            <input
+              onClick={() => changeView()}
+              className=" rounded-tiny focus:outline-none border-b-2 border-[#ddd] h-10 mt-4 w-full mb-10"
+              type="search"
+              placeholder=" Add email(notify when you're replied)"
+            />
+            <button className=" mb-10 py-2  font-semibold text-[20px] border-2 border-black hover:bg-transparent hover:text-black bg-black text-white rounded-full  px-6">
+              comment
+            </button>
+          </div>
         </div>
       </div>
+
       <Footer />
     </div>
   );

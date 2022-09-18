@@ -21,6 +21,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
     "react-scroll-motion": "^0.3.0",
+    "react-share": "^4.4.0",
     "react-slick": "^0.29.0",
     "scroll-to": "^0.0.2",
     "slick-carousel": "^1.8.1",

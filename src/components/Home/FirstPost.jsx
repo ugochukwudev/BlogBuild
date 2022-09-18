@@ -6,7 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 const FirstPost = () => {
   const { data, num } = useContext(BlogContent);
-  const select = data.length - 1;
+  const select = Math.floor(Math.random() * data.length - 1);
   const post = data[select];
   const date = post && post.fields.publishedDate;
   var realDate = new Date(date).toDateString();
@@ -35,11 +35,7 @@ const FirstPost = () => {
           </Link>
 
           <p className="ml-4 mr-2 text-xl leading-7 mb-4 text-text truncate-post-body lg:ml-20 lg:mr-10">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia
-            eu augue a posuere. Suspendisse eu tincidunt dui. Nam condimentum
-            bibendum purus sit amet tincidunt. Vestibulum ac malesuada arcu. In
-            eget lacus sit amet est faucibus rhoncus ut ac neque. Integer
-            porttitor sem erat, nec ultrices est aliquet et.
+            {post && post.fields.description}
           </p>
           <div className="flex flex-row relative h-auto ">
             <img
