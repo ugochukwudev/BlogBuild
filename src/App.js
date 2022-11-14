@@ -11,7 +11,6 @@ import Blog from "./components/Home/Blog";
 import { BlogContent } from "./components/Home/Home";
 import { useCallback, useState, useEffect } from "react";
 import { client } from "./components/Home/BlogData";
-import { BsSearch } from "react-icons/bs";
 function App() {
   // importing useState
   const [data, setData] = useState([]);
