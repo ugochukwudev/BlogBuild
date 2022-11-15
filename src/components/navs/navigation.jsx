@@ -18,7 +18,7 @@ const Navigation = () => {
         <Link to="/">
           <img
             className="h-14 w-14 mt-10 ml-4 md:ml-4 lg:ml-16"
-            src="https://img.icons8.com/external-others-inmotus-design/2x/external-U-alphabet-others-inmotus-design-19.png"
+            src="/logo (2).svg"
             alt="logo"
           />
         </Link>
@@ -35,7 +35,7 @@ const Navigation = () => {
           </Link>
           <Link to="/courses">
             <li className="hover:text-red-500 text-base px-6 font-bold">
-              Courses
+              Free Courses
             </li>
           </Link>
           {/* <Link to="/success-stories">

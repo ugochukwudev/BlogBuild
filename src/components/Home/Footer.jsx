@@ -41,7 +41,7 @@ const Footer = () => {
         <div className="flex flex-col ">
           <hr className="w-11/12 ml-auto mr-auto" />
           <div className="flex mb-4 mt-10 justify-center text-center lg:flex-row flex-col">
-            <p className=" text-white text-base">U-go-web © 2022</p>
+            <p className=" text-white text-base">Tech X © 2022</p>
             <p className="ml-1 text-white text-base">All Rights Reserved.</p>
           </div>
         </div>
