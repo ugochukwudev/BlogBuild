@@ -53,16 +53,18 @@ const PageNav = () => {
               </h4>
               <hr className="h-1 w-22 bg-[#d8383a]" />
             </div>
-            <div className="flex absolute right-8 lg:right-56 mt-px hover:text-[#d8383a] 2xl:right-auto 2xl:ml-96">
-              <h4
-                onClick={() => increment()}
-                className="leading-7 px-2  cursor-pointer"
-              >
-                {" "}
-                Next
-              </h4>
-              <FaGreaterThan className="mt-2 font-thin text-sm" />
-            </div>
+            {data.length > 10 && (
+              <div className="flex absolute right-8 lg:right-56 mt-px hover:text-[#d8383a] 2xl:right-auto 2xl:ml-96">
+                <h4
+                  onClick={() => increment()}
+                  className="leading-7 px-2  cursor-pointer"
+                >
+                  {" "}
+                  Next
+                </h4>
+                <FaGreaterThan className="mt-2 font-thin text-sm" />
+              </div>
+            )}
           </div>
         )}
         <Recommended />

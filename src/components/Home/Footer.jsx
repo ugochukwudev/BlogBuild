@@ -7,18 +7,32 @@ const Footer = () => {
         <div className="bg-[#202532] text-white flex flex-col lg:flex-row ml-auto mr-auto 2xl:w-4/12">
           <div className="ml-10 md:ml-20 lg:ml-24 xl:ml-28 lg:w-3/12 mb-10">
             <p className="text-base mt-20">
-              Gain Relevant Strategies & Global Skills for and Financial
-              Freedom.
+              Learn all you want , teach and interact with others ...
             </p>
           </div>
           <div className="ml-10 md:ml-20 lg:ml-24 xl:ml-8 lg:w-3/12 mb-10 lg:mt-14 ">
             <h4 className="uppercase font-bold text-base">QUICK LINKS</h4>
             <ul className="list-disc text-base ml-5">
-              <li>About us</li>
-              <li>Courses</li>
-              <li>Blog</li>
+              <Link to="/about">
+                <li>About us</li>
+              </Link>
+
+              <Link to="/courses">
+                <li>Courses</li>
+              </Link>
+              <Link to="/">
+                <li
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  Blog
+                </li>
+              </Link>
               {/* <li>Success stories</li> */}
-              <li>Contact Us</li>
+              <Link to="/contact">
+                <li>Contact Us</li>
+              </Link>
             </ul>
           </div>
           <div className="ml-10 md:ml-20 lg:ml-24 xl:ml-8 lg:w-3/12 mb-10 lg:mt-14 ">

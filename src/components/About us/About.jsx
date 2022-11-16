@@ -6,7 +6,7 @@ const About = () => {
       <h1 className="text-center text-xl font-bold text-[23px]  mt-10">
         About Us
       </h1>
-      <h3 className=" text-center text-base font-medium">
+      <h3 className=" text-center text-base font-medium leading-6">
         {" "}
         We're a group of techies with passion for problem solving and teaching .
         After much consideration, we decided it's high time we create a blog and

@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useCallback, useEffect } from "react";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { BlogContent } from "./Home";
+import { client } from "../Home/BlogData";
 const Homemenu = () => {
   const [display, setDisplay] = useState(false);
 
@@ -8,18 +9,39 @@ const Homemenu = () => {
   const resetDisplay = () => {
     setDisplay((display) => !display);
   };
-  let tags = [
-    "HTML",
-    "CSS",
-    "JAVASCRIPT",
-    "REACT JS",
-    "NODE JS",
-    "TAILWIND CSS",
-    "PYTHON",
-    "NEXT JS",
-    "EXPRESS JS",
-    "Art",
-  ];
+  const [data, setData] = useState([]);
+  const bringData = useCallback(async () => {
+    try {
+      const response = await client.getEntries({
+        content_type: "bloghashtag",
+      });
+      const responseData = await response.items;
+      if (responseData.length > 0) {
+        setData(responseData);
+        console.log("courses", data);
+        console.log("courses2", responseData);
+      } else {
+        data([]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [data]);
+  useEffect(() => {
+    bringData();
+  });
+  // let tags = [
+  //   "HTML",
+  //   "CSS",
+  //   "JAVASCRIPT",
+  //   "REACT JS",
+  //   "NODE JS",
+  //   "TAILWIND CSS",
+  //   "PYTHON",
+  //   "NEXT JS",
+  //   "EXPRESS JS",
+  //   "Art",
+  // ];
   // this function is gotten from our context above
   const removeMenu = () => {
     setDisplay(false);
@@ -64,16 +86,16 @@ const Homemenu = () => {
                 >
                   #All
                 </li>
-                {tags.map((item) => {
+                {data?.map((item) => {
                   return (
                     <li
                       onClick={() => {
-                        sethashtag(item);
+                        sethashtag(item.fields.tag);
                         removeMenu();
                       }}
                       className="border-white  border-[1px] px-1 py-4 w-fit mx-auto my-2 text-white text-center "
                     >
-                      #{item}
+                      #{item.fields.tag}
                     </li>
                   );
                 })}
@@ -90,15 +112,15 @@ const Homemenu = () => {
                 All
               </li>
 
-              {tags.map((item) => {
+              {data?.map((item) => {
                 return (
                   <li
                     onClick={() => {
-                      sethashtag(item);
+                      sethashtag(item.fields.tag);
                     }}
                     className="border-white cursor-pointer border p-2 w-fit text-white m-2 text-xs"
                   >
-                    #{item}
+                    #{item.fields.tag}
                   </li>
                 );
               })}

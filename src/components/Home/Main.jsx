@@ -25,9 +25,9 @@ const Main = () => {
       post.fields.title.toLowerCase().includes(search.toLowerCase())
   );
   console.log(searchword);
-  {
-    !searchword.length < 1 ? shownosearch() : hidenosearch();
-  }
+
+  !searchword.length < 1 ? shownosearch() : hidenosearch();
+
   let main = data && searchword.slice(secondSlice, firstSlice);
   return (
     <div className="lg:flex flex flex-col z-0">
@@ -45,7 +45,7 @@ const Main = () => {
           >
             <img
               data-aos="fade-right"
-              className="w-11/12 ml-auto mr-auto mt-10 mb-4 rounded-md md:w-1/4 lg:w-1/4 md:ml-16  md:mr-0 2xl:w-1/12"
+              className="w-11/12 ml-auto mr-auto mt-10 mb-4 rounded-md md:w-1/4 lg:w-1/4 md:ml-16  md:mr-0 2xl:ml-[0] 2xl:w-4/12"
               src={main && item.fields.mainImage.fields.file.url}
               alt={main && item.fields.title}
             />
