@@ -19,7 +19,7 @@ const FirstPost = () => {
 
   // this picks a particular data and displays it as the first content.
   return (
-    <div className=" flex h-auto relative w-fit ml-auto mr-auto 2xl:w-6/12">
+    <div className=" flex h-auto relative w-fit ml-auto mr-auto 2xl:w-8/12">
       {num === 1 && (
         <div
           data-aos="fade-right"

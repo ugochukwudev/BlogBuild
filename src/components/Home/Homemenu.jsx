@@ -54,7 +54,7 @@ const Homemenu = () => {
     <div className="sticky index top-0">
       {num === 1 && (
         <div className="sticky top-0  bg-[#d8383a] flex flex-col w-full h-40 lg:h-full  mt-10 ">
-          <div className="ml-auto mr-auto 2xl:w-6/12 relative">
+          <div className="ml-auto mr-auto 2xl:w-8/12 relative">
             <input
               onChange={(e) => addSearch(e.target.value)}
               className="pl-12 ml-14 z-50 rounded-tiny focus:outline-none border-gray-300 h-10 mt-4 w-4/6 md:absolute md:right-8 md:w-48 md:top-2 lg:w-3/12 "

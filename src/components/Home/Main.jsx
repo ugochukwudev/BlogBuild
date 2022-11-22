@@ -40,7 +40,7 @@ const Main = () => {
       {main.map((item, index) => {
         return (
           <div
-            className=" md:flex mb-10 ml-auto mr-auto w-full 2xl:w-6/12"
+            className=" md:flex mb-10 ml-auto mr-auto w-full 2xl:w-8/12"
             key={index}
           >
             <img

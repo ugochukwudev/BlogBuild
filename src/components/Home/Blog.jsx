@@ -10,15 +10,12 @@ import Footer from "./Footer";
 import { BlogContent } from "./Home";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { useState } from "react";
 var scrollTo = require("scroll-to");
 
 const Blog = () => {
   const { name } = useParams();
-  const { data, changeRegister } = useContext(BlogContent);
-
-  const changeView = () => {
-    changeRegister();
-  };
+  const { data } = useContext(BlogContent);
 
   useEffect(() => {
     //window.scrollTo(0, 0);
@@ -143,14 +140,85 @@ const Blog = () => {
       },
     },
   };
-  {
-    !data && (
-      <div>
-        <p>Data is loading please be patient</p>
-      </div>
-    );
-  }
 
+  !data && (
+    <div>
+      <p>Data is loading please be patient</p>
+    </div>
+  );
+  const [inputs, setInputs] = useState({
+    name: "",
+    email: "",
+    postid: "",
+    comment: "",
+    id: "",
+  });
+  const [reply, setReply] = useState(false);
+  const [commentbox, setCommentBox] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const addInputs = (name, input) => {
+    setInputs((prev) => {
+      return { ...prev, [name]: input };
+    });
+  };
+  const comment = async () => {
+    setLoading(true);
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      name: inputs.name,
+      email: inputs.email,
+      postid: name,
+      comment: inputs.comment,
+      link: window.location.href,
+      id: inputs.id.length > 1 ? inputs.id : null,
+    });
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    const data = await fetch(
+      "https://blogbackend-production-0f1e.up.railway.app/api/comment",
+      requestOptions
+    );
+    const response = await data.json();
+    console.log("r", response);
+
+    response?.userCreated?.data?.length > 1 &&
+      setCommentBox(response?.userCreated?.data);
+
+    response?.userCreated?.data?.length > 1 &&
+      setInputs({
+        name: "",
+        email: "",
+        postid: "",
+        comment: "",
+        id: "",
+      });
+    setLoading(false);
+  };
+  const fetchComments = async () => {
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    const data = await fetch(
+      `https://blogbackend-production-0f1e.up.railway.app/api/${name}`,
+      requestOptions
+    );
+    const response = await data.json();
+    console.log(response);
+    setCommentBox(response.users);
+  };
+  useEffect(() => {
+    fetchComments();
+  }, []);
   return (
     <div>
       {data.length < 1 && (
@@ -251,7 +319,6 @@ const Blog = () => {
               Please Ignore If you're signed in already
             </p>
             <input
-              onClick={() => changeView()}
               className=" rounded-tiny focus:outline-none border-b-2 bg-transparent border-[#ddd] h-10 mt-4 w-full mb-10"
               type="search"
               placeholder="subscribe to newsLetter"
@@ -268,8 +335,34 @@ const Blog = () => {
             />
           </div>
         </div>
-        <p className="text-red-700 text-center text-base font-medium">
-          email and phone number are required for comment
+        {/* display comments */}
+        <div className="w-10/12 lg:w-6/12 ml-auto mr-auto bg-gray-100 p-4 rounded-lg flex flex-col gap-6">
+          {commentbox?.map((data) => {
+            return (
+              <div
+                key={data._id}
+                className="bg-white rounded-lg gap-3 shadow-[0px_0px_10px_rgba(0,0,0,0.5)] p-4 flex"
+              >
+                <p className="w-2 h-2 rounded-full bg-red-600 mt-2 "></p>
+                <div className="flex flex-col gap-2">
+                  <p>{data.name}</p>
+                  <p>{data.comment}</p>
+                  <p
+                    className="cursor-pointer"
+                    onClick={() => {
+                      addInputs("comment", `@${data.name} `);
+                      addInputs("id", data._id);
+                    }}
+                  >
+                    Reply {">>"}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <p className="text-red-700 p-4 text-center text-base font-medium">
+          email, name and comment are required fields please fill them
         </p>
         <div className="flex w-8/12 ml-auto mr-auto">
           <div className="mr-4 mt-2">
@@ -279,21 +372,37 @@ const Blog = () => {
             />
             <p className="text-xs">Anonymous</p>
           </div>
+
           <div className="">
             <input
-              onClick={() => changeView()}
+              name="comment"
+              onChange={(e) => addInputs(e.target.name, e.target.value)}
               className=" rounded-tiny focus:outline-none border-b-2 border-[#ddd] h-10 mt-4 w-full mb-10"
               type="search"
               placeholder=" Add a comment"
+              value={inputs.comment}
             />
             <input
-              onClick={() => changeView()}
+              name="email"
+              onChange={(e) => addInputs(e.target.name, e.target.value)}
               className=" rounded-tiny focus:outline-none border-b-2 border-[#ddd] h-10 mt-4 w-full mb-10"
               type="search"
               placeholder=" Add email(notify when you're replied)"
+              value={inputs.email}
             />
-            <button className=" mb-10 py-2  font-semibold text-[20px] border-2 border-black hover:bg-transparent hover:text-black bg-black text-white rounded-full  px-6">
-              comment
+            <input
+              name="name"
+              onChange={(e) => addInputs(e.target.name, e.target.value)}
+              className=" rounded-tiny focus:outline-none border-b-2 border-[#ddd] h-10 mt-4 w-full mb-10"
+              type="search"
+              placeholder=" Add name"
+              value={inputs.name}
+            />
+            <button
+              onClick={() => comment()}
+              className=" mb-10 py-2  font-semibold text-[20px] border-2 border-black hover:bg-transparent hover:text-black bg-black text-white rounded-full  px-6"
+            >
+              {!loading ? "comment" : "please wait ..."}
             </button>
           </div>
         </div>

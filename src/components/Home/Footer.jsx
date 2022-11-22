@@ -4,9 +4,14 @@ const Footer = () => {
   return (
     <div>
       <div className="bg-[#202532] w-full ">
-        <div className="bg-[#202532] text-white flex flex-col lg:flex-row ml-auto mr-auto 2xl:w-4/12">
+        <div className="bg-[#202532] text-white flex flex-col lg:flex-row ml-auto mr-auto 2xl:w-8/12">
           <div className="ml-10 md:ml-20 lg:ml-24 xl:ml-28 lg:w-3/12 mb-10">
-            <p className="text-base mt-20">
+            <img
+              className="h-[50px] w-[50px] mt-20"
+              src="/logo (2).svg"
+              alt=""
+            />
+            <p className="text-base mt-2">
               Learn all you want , teach and interact with others ...
             </p>
           </div>
