@@ -34,7 +34,7 @@ function App() {
     } catch (error) {
       console.log(error);
     }
-  }, [data]);
+  }, []);
 
   // calling above functon
   useEffect(() => {

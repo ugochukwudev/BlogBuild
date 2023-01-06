@@ -29,7 +29,7 @@ const Homemenu = () => {
   }, [data]);
   useEffect(() => {
     bringData();
-  });
+  }, []);
   // let tags = [
   //   "HTML",
   //   "CSS",
