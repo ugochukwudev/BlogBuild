@@ -364,7 +364,7 @@ const Blog = () => {
         <p className="text-red-700 p-4 text-center text-base font-medium">
           email, name and comment are required fields please fill them
         </p>
-        <div className="flex w-8/12 ml-auto mr-auto">
+        <div className="flex w-11/12 lg:w-8/12 ml-auto mr-auto">
           <div className="mr-4 mt-2">
             <img
               src="https://blog.daba.school/icons/anonymous.svg"

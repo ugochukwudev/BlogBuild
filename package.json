@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
+    "@vercel/analytics": "^0.1.6",
     "aos": "^2.3.4",
     "contentful": "^9.1.32",
     "cors": "^2.8.5",
