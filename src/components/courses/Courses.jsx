@@ -1,6 +1,7 @@
 import React from "react";
 import { client } from "../Home/BlogData";
 import { useCallback, useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Courses = () => {
   const [data, setData] = useState([]);
@@ -27,6 +28,14 @@ const Courses = () => {
   });
   return (
     <>
+      <Helmet>
+        <title> TechX Free Courses</title>
+        <meta
+          name="description"
+          content="here, we post courses that will help you upgrade your skills and become better at what you do for free..."
+        />
+        <link rel="canonical" href="/courses" />
+      </Helmet>
       <div className="ml-auto mr-auto mt-10 cursor-pointer  border-2  rounded w-10/12  lg:w-6/12 ">
         <h1 className="text-center text-xl font-bold text-[23px]  mt-10">
           courses for you
