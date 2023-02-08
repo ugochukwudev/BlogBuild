@@ -223,7 +223,7 @@ const Blog = () => {
   return (
     <>
       <Helmet>
-        <title> {newPerson && newPerson?.fields?.title}</title>
+        <title>{newPerson && newPerson?.fields?.title}</title>
         <meta
           name="description"
           content={newPerson && newPerson?.fields?.description}
