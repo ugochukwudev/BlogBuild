@@ -228,7 +228,7 @@ const Blog = () => {
           name="description"
           content={newPerson && newPerson?.fields?.description}
         />
-        <link rel="canonical" href={`/${name}`} />
+        <link rel="canonical" href={`https://www.techx.com.ng/`} />
       </Helmet>
       <div>
         {data.length < 1 && (
